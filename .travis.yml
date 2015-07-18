@@ -8,7 +8,7 @@ env:
     - GIT_COMMITTER_EMAIL=niku@niku.name
     - GIT_AUTHOR_NAME=niku
     - GIT_AUTHOR_EMAIL=niku@niku.name
-    - secure: "MPYTp0QiIEM4pQwz9edmbt2oNuzNOWkN9ILc+e9X5Ki415PjrmnVvwFRA/X/5zTxu3XY7I+aYcwmJGLR62T48zKi2RkGoB+Ze08ckWdz/RPXtxhxstUtiOeBbBzX89GLgjRcyJcawFh87dUgtkDiowJujsqhUKG2sTtl7WLZHHc="
+    - secure: "RhsJbJrJAs/kpg6ajSOx5ceLItSUTTIlyJfrB2dIsdQFLkNkKzgJ0pViJZqslA8pSB/St7t2uuRqi6TkYN/26kHxCHCae9/oq3OSYqgVqq0XslctqjfJ61aOjSDhNYeCukAlpSe4dFVA9A+AXsUICAGsyrNpB3K27SHZdGB7x62NlEvpXbizmLGrLzWQrOt/OQvOZNXr1Y7/H1Cqc9lI/PvaGuNXbfLjOPPcX+QMuehcmtFQj/JUg4B4tD5ZWIZ/yNR9NKRTHUPxPn90cGnIGJD+/swxWYHFELHtx16D7udxyXC2hlhYNSUP+bkT702gIGA2UcI2mASslORwaYVfdlOsHq6BlYpiZoyHLl1/QPKwXWWu145MJCTfkaBQcQFugU/b6qIsRxmwpW2G2C/milCi4JHdIKcorXZXIUod9BNsWJ1XYaorTBHZIpQ/yM/rEAZzYhw9ySIR14AhiVXrWuMOT5JQGXp5nFVudAY6nmV1J6fvQJQgP1ygQcJDXU40Rnl+yjYamulN93/NjMHh0+OCtmRMKpL35rQYdBwa6p2eHDTXOU8r2rlL3ANdWVv9Or3Q8yHL0i+HY1YDdWdj/0RV880vYoUaJ3LlkgyXIei+LXEA90wR7D/StBNnDeX47S+uii11tkI5A8Vgt7V+0SQmbTMtak+vuVcTpHLUb5g="
 
 branches:
   only:
@@ -35,4 +35,4 @@ after_success:
   - mv simulator/html5/* $HOME/html/
   - ruby -i -pe 'puts %Q!"sourceRoot":"https://raw.githubusercontent.com/#{ENV["TRAVIS_REPO_SLUG"]}/#{ENV["TRAVIS_COMMIT"]}",! if $. == 4' $HOME/html/sourcemap
   - ruby -i -pe 'gsub %r!"../../!, "\""' $HOME/html/sourcemap
-  - cd $HOME/html && git add . && git commit -a -m "Built by $TRAVIS_COMMIT" && git push --quiet https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG.git gh-pages 2> /dev/null
+  - cd $HOME/html && git add . && git commit -a -m "Built by $TRAVIS_COMMIT" && git push --set-upstream --quiet https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG.git gh-pages 2> /dev/null

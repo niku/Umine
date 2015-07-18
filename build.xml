@@ -171,7 +171,7 @@
             </sources>
             <sources dir="${basedir}">
                 <file name="src/resource.js"/>
-                <file name="src/app.js"/>
+                <file name="src/main-scene.js"/>
                 <file name="main.js"/>
 
             </sources>
